@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+      }
+      .navlist {
+        display: flex;
+        gap: 3.5rem;
+        height: 15vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        /* background-color: red; */
+        position: fixed;
+      }
+      .navlist li {
+        list-style: none;
+      }
+
+      .navlist li a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .navlist li a:hover {
+        color: #5db9ee;
+        text-decoration: underline;
+      }
+
+      .left-container,
+      .right-container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .left-container {
+        background: #262525;
+        width: 70%;
+        padding: 3rem;
+      }
+      .right-container {
+        background: linear-gradient(#262525 10%, #3877ff);
+        width: 30%;
+      }
+
+      .icons .fa-brands {
+        color: #bbb;
+        font-size: 1.7rem;
+      }
+
+      .icons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+      }
+      .content {
+        margin: 4rem;
+      }
+      .content .intro {
+        font-size: 1.5rem;
+        color: white;
+      }
+      .content .intro span {
+        color: #5db9ee;
+      }
+      .content h1 {
+        font-size: 4rem;
+        color: #5db9ee;
+      }
+      .content .detail {
+        font-size: 1.1rem;
+        color: white;
+        max-width: 38rem;
+        margin: 1.1rem 0 3rem 0;
+        line-height: 1.8rem;
+        margin-right: 40px;
+      }
+      .btn button {
+        border: 0.1rem solid #5db9ee;
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: 0.5s ease;
+      }
+
+      button:nth-child(1) {
+        background: #5db9ee;
+        color: #262525;
+      }
+
+      button:nth-child(2) {
+        background: transparent;
+        color: #5db9ee;
+        margin-left: 2rem;
+      }
+
+      button:nth-child(1):hover {
+        background: transparent;
+        color: #5db9ee;
+      }
+
+      button:nth-child(2):hover {
+        background: #5db9ee;
+        color: #262525;
+      }
+      .icons .fa-brands:hover {
+        cursor: pointer;
+        background: linear-gradient(#fff, #3877ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .design .circle {
+        aspect-ratio: 1;
+        position: absolute;
+        border-radius: 50%;
+        top: 50%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+      }
+
+      .circle:nth-child(1) {
+        background: linear-gradient(90deg, transparent 50%, #262525 50%);
+        width: 30rem;
+      }
+
+      .circle:nth-child(2) {
+        width: 23rem;
+        background-image: url("/image1.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        border: 1rem solid white;
+        box-shadow: 0 0 1rem #fff, inset 0 0 1rem #fff, 0 0 2rem #3877ff,
+          inset 0 0 2rem #3877ff, 0 0 4rem #3877ff, inset 0 0 4rem #3877ff;
+      }
+      .work {
+        height: 100vh;
+        width: 100vw;
+        background-color: #262525;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+      }
+      .work h1 {
+        color: #5db9ee;
+      }
+      /* .work .p1{
+            margin:3rem;
+        } */
+      .work p {
+        padding: 2rem 3rem;
+        font-size: 20px;
+      }
+
+      .skills {
+        height: 100vh;
+        width: 100vw;
+        background-color: #262525;
+        display: flex;
+
+        flex-direction: column;
+        color: #fff;
+      }
+
+      .skills h1 {
+        color: #5db9ee;
+        text-align: center;
+        margin-top: 5rem;
+      }
+
+      .skills ul li {
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+
+      #home:target,
+      #bio-data:target,
+      #skills:target,
+      #projects:target,
+      #certifications:target {
+        display: flex; /* Show targeted section */
+      }
+      #home {
+        display: flex; /* Home visible by default */
+      }
+
+      .projects {
+        height: 100vh;
+        width: 100vw;
+        background-color: #262525;
+        display: flex;
+
+        flex-direction: column;
+        color: #fff;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .projects h1 {
+        color: #5db9ee;
+        margin-bottom: 2rem;
+      }
+
+      .project-container {
+        display: flex;
+        gap: 2rem; /* Space between divs */
+        width: 80%; /* Width of the entire row of divs */
+        justify-content: center;
+      }
+
+      .project-container .items {
+        flex: 1; /* Make each div take equal space */
+        padding: 2rem;
+        background-color: #333;
+        border-radius: 1rem;
+        text-align: center;
+        border: 2px solid #5db9ee;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .project-container .items:hover {
+        background-color: #5db9ee;
+        color: #262525;
+        transform: translateY(-10px); /* Elevate the div on hover */
+      }
+
+      
+
+      .certifications {
+    height: 100vh;
+    width: 100vw;
+    background-color: #262525;
+    padding: 2rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.certifications h1 {
+    color: #5DB9EE;
+    margin-bottom: 2rem;
+}
+
+.certification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 80%;
+}
+
+.certificate-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.certificate-info {
+    flex: 3;
+}
+
+.certificate-info h2 {
+    color: #5DB9EE;
+    margin-bottom: 0.5rem;
+}
+
+.certificate-info p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.certificate-logo {
+    flex: 1;
+    text-align: right;
+}
+
+.certificate-logo img {
+    width: 80px;
+    height: auto;
+    border-radius: 0.5rem;
+}
+.certificate-logo{
+    font-size: 1.7rem;;
+}
+
+
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container" id="home">
+      <ul class="navlist">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#bio-data">Bio-Data</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+
+      <div class="left-container">
+        <div class="icons">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-linkedin-in"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-codepen"></i>
+        </div>
+        <div class="content">
+          <p class="intro">Hi! I am <span>Rajeev Santwani</span></p>
+          <h1>Web Developer.</h1>
+          <p class="detail">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+            corrupti dolorum cupiditate cumque quo tempore, consequuntur tenetur
+            quos provident velit?
+          </p>
+          <div class="btn">
+            <button>Hire me</button>
+            <button>View projects</button>
+          </div>
+        </div>
+      </div>
+      <div class="right-container"></div>
+
+      <div class="design">
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+    <div id="bio-data" class="work">
+      <h1>Bio Data</h1>
+      <h3>Computer Scientist</h3>
+      <p class="p1">
+        I am Rajeev Santwani, a dedicated 3rd-year computer science student with
+        a strong foundation in web design and development. With over 3 years of
+        experience, I have honed my skills in creating captivating and
+        user-friendly websites. In addition to my expertise in frontend
+        development, I am proficient in programming languages such as C++ and
+        Java, and have a solid grasp of data structures, databases, and web
+        engineering principles.
+      </p>
+      <p>
+        My passion lies in blending creativity with technical skills to design
+        visually appealing websites that deliver seamless user experiences. I
+        take pride in staying current with design trends and understanding both
+        UX and UI principles to ensure intuitive interactions. Whether it's
+        analyzing target audiences or aligning designs with brand identity, I
+        strive to create websites that not only look great but also provide
+        meaningful and enjoyable experiences for visitors.
+      </p>
+    </div>
+
+    <div id="skills" class="skills">
+      <h1>Skills</h1>
+      <ul>
+        <li><strong>Programming Languages:</strong> C++, Java, JavaScript</li>
+        <li>
+          <strong>Web Development:</strong> HTML, CSS, JavaScript, Bootstrap
+        </li>
+        <li><strong>Frameworks & Libraries:</strong> React.js, jQuery</li>
+        <li><strong>Database Management:</strong> MySQL, MongoDB</li>
+        <li><strong>Version Control:</strong> Git, GitHub</li>
+        <li>
+          <strong>Development Tools:</strong> Visual Studio Code, IntelliJ IDEA
+        </li>
+        <li>
+          <strong>Problem Solving:</strong> Data Structures and Algorithms
+        </li>
+        <li>
+          <strong>Soft Skills:</strong> Communication, Teamwork, Critical
+          Thinking
+        </li>
+      </ul>
+    </div>
+
+    <div class="projects" id="projects">
+      <h1>Projects</h1>
+      <div class="project-container">
+        <div class="items" id="project-1">
+          <h3>Project 1: Library Management System (OOP)</h3>
+          <h4>Description:</h4>
+
+            <p>Developed a Library Management System using Object-Oriented Programming principles to manage book inventories, member registrations, and borrowing/returning of books.
+            Implemented features such as searching for books, tracking overdue items, and generating reports.</p>
+            
+            <h4>Programming Language:</h4> [Java]
+            <p>OOP Concepts: Encapsulation, Inheritance, Polymorphism
+            Development Environment: [IntelliJ, Visual Studio]</p>
+        </div>
+        <div class="items" id="project-2">
+          <h3>Project 2: Airline Reservation System (Data Structures)
+          </h3>
+          <h4>Description:</h4>
+
+            <p>Designed and implemented an Airline Reservation System using various data structures to efficiently manage flight schedules, reservations, and passenger details.
+              Focused on optimizing data retrieval and storage using appropriate data structures like arrays, linked lists, and hash tables..</p>
+            
+            <h4>Programming Language:</h4> [Java]
+            <p>Data Structures: Arrays, Linked Lists, Hash Tables
+              Development Environment: [IntelliJ IDEA, NetBeans]</p>
+
+          
+          
+        </div>
+        <div class="items" id="project-3">
+          <h3>Project 3: Online Car Garage (DBMS)
+          </h3>
+          <h4>Description:</h4>
+
+            <p>Developed the backend of an Online Car Garage application using MySQL to manage car listings, customer inquiries, and sales transactions.
+              Focused on creating a robust database schema and efficient SQL queries to support the application’s functionalities.</p>
+            
+            <h4>Programming Language:</h4> [Java] [SQL]
+            <p>Database Management System: MySQL
+              Development Environment: [IntelliJ,MySQL Workbench]</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="certifications" class="certifications">
+        <h1>Certifications</h1>
+        <div class="certification-list">
+            <div class="certificate-item">
+                <div class="certificate-info">
+                    <h2>Full-Stack Web Development</h2>
+                    <p>Issued by: <strong>Coursera</strong></p>
+                    <p>Date: <strong>18-July 2024</strong></p>
+                    <p class="description">Learned how to build responsive web applications using HTML, CSS, JavaScript, React, and Node.js.</p>
+                </div>
+                <div class="certificate-logo">
+                    <img src="/coursera.png" alt="Coursera Logo">
+                </div>
+            </div>
+            <div class="certificate-item">
+                <div class="certificate-info">
+                    <h2>Data Structures and Algorithms</h2>
+                    <p>Issued by: <strong>Google</strong></p>
+                    <p>Date: <strong>18-May 2024</strong></p>
+                    <p class="description">Gained in-depth understanding of data structures such as arrays, linked lists, trees, and algorithms for sorting and searching.</p>
+                </div>
+                <div class="certificate-logo">
+                    <i class="fa-brands fa-google"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+  </body>
+</html>
